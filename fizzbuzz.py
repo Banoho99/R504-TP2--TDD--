@@ -1,0 +1,3 @@
+def affiche():
+    return ""
+
