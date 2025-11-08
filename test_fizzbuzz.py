@@ -1,6 +1,5 @@
 import fizzbuzz
 
-def test_affiche_sans_parametre():
-    result = fizzbuzz.affiche()
-    assert result.startswith("12Fizz4Buzz"), "Le début du résultat est incorrect"
-
+def test_affiche_15():
+    attendu = "12Fizz4BuzzFizz78FizzBuzz11Fizz1314FrisBee"
+    assert fizzbuzz.affiche(15) == attendu
