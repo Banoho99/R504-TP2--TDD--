@@ -2,15 +2,24 @@ import string
 
 # Table conseillée par l'énoncé
 TABLE = string.ascii_letters + string.ascii_punctuation + string.ascii_digits + " "
+_INDEX = {ch: i for i, ch in enumerate(TABLE)}
+_N = len(TABLE)
 
-def crypt(message: str) -> str:
-    """Décale chaque caractère d'un cran dans TABLE (wrap inclus)."""
+def crypt(message: str, pas: int) -> str:
+    """
+    Chiffre `message` en décalant chaque caractère de `pas` positions dans TABLE,
+    puis concatène le chiffre `pas` à la fin du résultat.
+    Contraintes : pas est un entier entre 1 et 9 inclus.
+    """
+    if not isinstance(pas, int):
+        raise TypeError("`pas` doit être un entier")
+    if pas < 1 or pas > 9:
+        raise ValueError("`pas` doit être compris entre 1 et 9 inclus")
+
     out = []
-    n = len(TABLE)
-    idx = {ch: i for i, ch in enumerate(TABLE)}
     for ch in message:
-        if ch not in idx:
+        if ch not in _INDEX:
             raise ValueError(f"Caractère non supporté: {repr(ch)}")
-        out.append(TABLE[(idx[ch] + 1) % n])
-    return "".join(out)
+        out.append(TABLE[(_INDEX[ch] + pas) % _N])
 
+    return "".join(out) + str(pas)
