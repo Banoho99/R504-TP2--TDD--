@@ -1,11 +1,11 @@
-# 🧪 TP – Test Driven Development (TDD) en Python
+# TP – Test Driven Development (TDD) en Python
 
 Ce projet est réalisé dans le cadre du module **R504 – Développement Guidé par les Tests (TDD)**.  
 Toutes les étapes ont été développées avec la méthodologie **Test First** et versionnées avec **Git + GitHub Desktop**.
 
 ---
 
-## ✅ Objectifs
+## Objectifs
 
 ✔ Utiliser le TDD :  
 1. Écriture d’un test **qui échoue**  
@@ -20,5 +20,5 @@ Toutes les étapes ont été développées avec la méthodologie **Test First** 
 
 ---
 
-## 📁 Structure du projet
+## Structure du projet
 
