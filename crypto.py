@@ -23,3 +23,25 @@ def crypt(message: str, pas: int) -> str:
         out.append(TABLE[(_INDEX[ch] + pas) % _N])
 
     return "".join(out) + str(pas)
+
+def decrypt(message: str) -> str:
+    """
+    Déchiffre un message produit par `crypt(message, pas)`.
+    Le dernier caractère du message chiffré est le pas (un chiffre entre 1 et 9).
+    """
+    if not message:
+        raise ValueError("Message vide")
+
+    pas_char = message[-1]
+    if pas_char not in "123456789":
+        raise ValueError("Suffixe invalide: `pas` doit être un chiffre entre 1 et 9")
+    pas = int(pas_char)
+
+    cipher = message[:-1]
+    out = []
+    for ch in cipher:
+        if ch not in _INDEX:
+            raise ValueError(f"Caractère non supporté: {repr(ch)}")
+        out.append(TABLE[(_INDEX[ch] - pas) % _N])
+
+    return "".join(out)
